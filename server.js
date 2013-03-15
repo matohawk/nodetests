@@ -1,25 +1,16 @@
 var http = require("http");
 var url = require("url");
-var querystring = require("querystring");
-var drawer = require("./drawer");
 
-function start(route) {
+function start(route, handle) {
 	function onRequest(request, response) {
-		var pathname = url.parse(request.url).query;
-		pathname = querystring.parse(pathname);
 
-		for( var k in pathname){
-
-	  		console.log("Request for " + pathname[k] + " received");
-	  		route(pathname[k], response);
-		
-		}
-
+		var pathname = url.parse(request.url).pathname;
 
 	  	response.writeHead(200, {"Content-Type": "text/plain"});
-	  	
 
+	  	route(handle, pathname);
 
+	  	response.write("Hello World");
 	  	response.end();
 	}
 

@@ -1,4 +1,4 @@
-function square(response){
+function square(){
 
 	response.write("Hello world");
 	

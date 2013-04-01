@@ -10,6 +10,7 @@ function start(route, handle) {
 
 	  	route(handle, pathname);
 
+
 	  	response.write("Hello World");
 	  	response.end();
 	}
